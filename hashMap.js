@@ -26,6 +26,10 @@ class HashMap {
         
         const index = this.hash(key);
 
+        if (index < 0 || index >= this.storageLimit) {
+        throw new Error("Index out of bounds");
+        }
+
         if (!this.storage[index]) {
             this.storage[index] = [];
         }
@@ -63,6 +67,10 @@ class HashMap {
     get(key) {
         const index = this.hash(key);
 
+        if (index < 0 || index >= this.storageLimit) {
+        throw new Error("Index out of bounds");
+        }
+
         if (this.storage[index]) {
             for (let i = 0; i < this.storage[index].length; i++) {
                 if (this.storage[index][i][0] === key) {
@@ -75,6 +83,10 @@ class HashMap {
 
     has(key) {
         const index = this.hash(key);
+
+        if (index < 0 || index >= this.storageLimit) {
+        throw new Error("Index out of bounds");
+        }
         
         if (this.storage[index]) {
             for (let i = 0; i < this.storage[index].length; i++) {
@@ -89,6 +101,10 @@ class HashMap {
 
     remove(key) {
         const index = this.hash(key);
+
+        if (index < 0 || index >= this.storageLimit) {
+        throw new Error("Index out of bounds");
+        }
         
         if (this.storage[index]) {
 
